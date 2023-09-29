@@ -1,9 +1,24 @@
+
+require('dotenv').config()
 const express = require('express')
 const app = express()
 
-// respond with "hello world" when a GET request is made to the homepage
+
+
+
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected!')).catch((error)=>{
+    console.log(error);
+  });
+
+
+
+
+
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.send('hello worlds')
 })
 
 app.listen(3000,()=>{
