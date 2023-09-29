@@ -1,0 +1,20 @@
+{
+  "name": "crud-using-nodejs",
+  "version": "1.0.0",
+  "description": "Basic CRUD application using node js and mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswinbennyofficial/CRUD-using-NODEjs.git"
+  },
+  "keywords": [],
+  "author": "aswinbenny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aswinbennyofficial/CRUD-using-NODEjs/issues"
+  },
+  "homepage": "https://github.com/aswinbennyofficial/CRUD-using-NODEjs#readme"
+}
