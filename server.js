@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 
 
 // DELETE
+// Define a DELETE route for '/delete'
 app.delete('/delete/:id', async(req,res) =>{
     try{
 
