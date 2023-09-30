@@ -22,9 +22,70 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/product', async(re,res) => {
+// DELETE
+app.delete('/delete/:id', async(req,res) =>{
     try{
 
+        const {id}=req.params;
+        // Attempt to find product by id and delete document as per request
+        const product = await Product.findByIdAndDelete(id);
+        if(!product){
+            res.status(404).send('cannot any any product with ID',id);
+        }
+        else{
+            res.status(200).send('delete successful');
+        }
+
+    }catch(error){
+        res.status(500).send('error occured ',error);
+    }
+
+});
+
+
+// UPDATE
+// Define a PUT route for '/update'
+app.put('/update/:id', async(req,res) => {
+    try{
+
+        const {id}=req.params;
+        // Attempt to find product by id and update document as per request
+        const product=await Product.findByIdAndUpdate(id,req.body);
+        if(!product){
+            res.status(404).send('not found any product with ID:',id);
+        }
+        else{
+            res.status(200).send('update successful');
+        }
+
+    }catch(e){
+        res.status(500).send('Internal server error',error);
+    }
+});
+
+// READ BY ID
+// Define a GET route for '/product'
+app.get('/product/:id', async(req,res) => {
+    try{
+
+        const {id}=req.params;
+        // Attempt to find product by id in the MongoDB collection
+        const products= await Product.findById(id);
+        res.status(200).json(products);
+
+
+    }catch(error){
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// READ ALL
+// Define a GET route for '/products'
+app.get('/products', async(re,res) => {
+    try{
+
+        // Attempt to find all products in the MongoDB collection
         const products= await Product.find({});
         res.status(200).json(products);
 
@@ -36,6 +97,7 @@ app.get('/product', async(re,res) => {
 });
 
 
+// CREATE
 // Define a POST route for '/product'
 app.post('/product', async(req, res) => {
     try {
