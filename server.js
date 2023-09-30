@@ -8,6 +8,9 @@ const app = express()
 // Import Mongoose, an ODM for MongoDB
 const mongoose = require('mongoose'); 
 
+// import product models
+const Product = require('./Models/productModels');
+
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -19,11 +22,15 @@ app.get('/', (req, res) => {
 });
 
 // Define a POST route for '/product'
-app.post('/product', (req, res) => {
+app.post('/product', async(req, res) => {
     try {
         
-        console.log(req.body);
-        res.send(req.body);
+        // console.log(req.body);
+        // res.send(req.body);
+
+        const product=await Product.create(req.body);
+        res.status(200).json(product);
+
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
