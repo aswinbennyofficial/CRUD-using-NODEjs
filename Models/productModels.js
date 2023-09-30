@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Creating a mongoose schmea
 const productSchema=mongoose.Schema(
     {
         name:{
@@ -21,7 +23,7 @@ const productSchema=mongoose.Schema(
     }
 
 );
-// naming the schema Product
+// Compiling our schema 'productSchema' into mongoose model Product 
 const Product=mongoose.model('Product',productSchema);
 
 module.exports = Product;

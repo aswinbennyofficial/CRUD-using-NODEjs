@@ -8,7 +8,7 @@ const app = express()
 // Import Mongoose, an ODM for MongoDB
 const mongoose = require('mongoose'); 
 
-// import product models
+// import product model
 const Product = require('./Models/productModels');
 
 
